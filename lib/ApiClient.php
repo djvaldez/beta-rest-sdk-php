@@ -145,6 +145,7 @@ class ApiClient
             curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
         }
 
+        ksort($queryParams);
         $query = http_build_query($queryParams);
         if (! empty($queryParams)) {
             $url = ($url . '?' . $query);
