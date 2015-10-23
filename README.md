@@ -21,6 +21,7 @@ All you need to do to get started is set your API key and shared secret key in t
 ````php
 CyberSource\Configuration::setApiKey($apiKey);
 CyberSource\Configuration::setSharedSecret($sharedSecret);
+```
 
 ###Basic Examples
 Samples are included which you can run from the project home directory. Here's how you can run a simple sale:
