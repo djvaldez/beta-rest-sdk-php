@@ -128,7 +128,7 @@ class ApiClient
         if ($postData and in_array('Content-Type: application/x-www-form-urlencoded', $headers)) {
             $postData = http_build_query($postData);
         } else if ((is_object($postData) or is_array($postData)) and !in_array('Content-Type: multipart/form-data', $headers)) { // json model
-            $postData = json_encode($this->serializer->sanitizeForSerialization($postData));
+            $postData = json_encode($this->serializer->sanitizeForSerialization($postData), JSON_UNESCAPED_SLASHES);
         }
 
         $url = $this->config->getHost() . $resourcePath;
