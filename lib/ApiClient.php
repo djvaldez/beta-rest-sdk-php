@@ -223,6 +223,7 @@ class ApiClient
                 $data = $http_body;
             }
         } else {
+            print_r($http_body);
             throw new ApiException(
                 "[".$response_info['http_code']."] Error connecting to the API ($url)",
                 $response_info['http_code'], $http_header, $http_body
