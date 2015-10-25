@@ -12,8 +12,6 @@ $sharedSecret = "my_secret_key";
 CyberSource\Configuration::setApiKey($apiKey);
 CyberSource\Configuration::setSharedSecret($sharedSecret);
 
-$cybs_auth = new \CyberSource\Authorizations();
-
 $payment = new Payment();
 $payment->setCardNumber('4111111111111111')
         ->setCardExpirationMonth('10')

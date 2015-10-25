@@ -70,6 +70,25 @@ $refund_request = (new RefundRequest())->setAmount(5.00);
 $refund = $cybs_refunds->refundCapture($capture->getId(), $refund_request);
 ```
 
+###Using Visa Checkout
+If you're account is configured to use Apple Pay, include in the encrypted data of your payment, and set your payment solution to "001".
+```php
+use CyberSource\Model\Payment as Payment;
+
+$cybs_sales = new CyberSource\Sales();
+
+$payment = new Payment();
+$payment->setEncryptedData('my visa checkout encrypted data')
+        ->setEncryptedKey('my encrypted key');
+
+$request = new AuthCaptureRequest();
+$request->setAmount(5.99)
+        ->setCurrency('USD')
+        ->setPaymentSolution("visacheckout")
+        ->setPayment($payment);
+$sale = $cybs_sales->sale($request);
+```
+
 ###Using Apple Pay
 If you're account is configured to use Apple Pay, include in the encrypted data of your payment, and set your payment solution to "001".
 ```php
@@ -90,4 +109,4 @@ $request->setAmount(5.99)
         ->setCurrency('USD')
         ->setPaymentSolution("001")
         ->setPayment($payment);
-
+```
